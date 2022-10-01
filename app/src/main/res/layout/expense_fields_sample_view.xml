@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginHorizontal="6dp"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="98dp">
+
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:background="@drawable/exp_img_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="60dp"
+        android:layout_height="60dp">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/expanse_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:srcCompat="@drawable/more" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="2dp"
+        android:textSize="13sp"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:id="@+id/expanse_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="More" />
+</LinearLayout>

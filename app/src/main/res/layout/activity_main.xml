@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="24dp"
+    android:paddingTop="24dp"
+    android:paddingBottom="0dp"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:weightSum="12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_weight="10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:textColor="@color/gray"
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hello Cypher Stark" />
+
+            <TextView
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Welcome Back!" />
+        </LinearLayout>
+
+        <ImageView
+            android:elevation="6dp"
+            android:padding="4dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/card_lift_bg"
+            android:layout_gravity="center"
+            android:id="@+id/resetBTN"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            app:srcCompat="@drawable/ic_restart"
+            app:tint="@color/gray" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingHorizontal="18dp"
+        android:weightSum="12"
+        android:elevation="6dp"
+        android:layout_marginVertical="18dp"
+        android:background="@drawable/cardbground"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_gravity="center_vertical"
+            android:layout_weight="9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Current Balance" />
+
+            <TextView
+                android:textStyle="bold"
+                android:textSize="32sp"
+                android:textColor="@color/white"
+                android:id="@+id/currentBalanceTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BDT12000.00" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/addMoneyBTNIV"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            app:srcCompat="@drawable/ic_add"
+            app:tint="@color/white" />
+    </LinearLayout>
+
+
+<!--    LEND || BORROW || MORE card-->
+    <!--
+
+    <LinearLayout
+        android:weightSum="12"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/lendMoneyLL"
+            android:background="@drawable/option_card_bg"
+            android:backgroundTint="@color/blue"
+            android:gravity="center"
+            android:elevation="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:background="@drawable/img_bg"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/lendMoneyIV"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    app:srcCompat="@drawable/send" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="4dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lend" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/option_card_bg"
+            android:backgroundTint="@color/violate"
+            android:gravity="center"
+            android:elevation="6dp"
+            android:layout_marginHorizontal="4dp"
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:background="@drawable/img_bg"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/imageView6"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    app:srcCompat="@drawable/receive" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="4dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Borrow" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/option_card_bg"
+            android:backgroundTint="@color/orange"
+            android:gravity="center"
+            android:elevation="6dp"
+            android:layout_marginLeft="4dp"
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:background="@drawable/img_bg"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/imageView8"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    app:srcCompat="@drawable/more" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="4dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="More" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    -->
+
+    <LinearLayout
+        android:layout_marginVertical="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/idRVExpenseFields"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        //HEADING
+        <LinearLayout
+            android:layout_marginBottom="18dp"
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black_1"
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Recent Activity" />
+
+            <TextView
+                android:textAlignment="textEnd"
+                android:id="@+id/seeAllBTN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="See All" />
+        </LinearLayout>
+
+        //TRANSACTIONS
+        <androidx.recyclerview.widget.RecyclerView
+            android:paddingRight="0dp"
+            android:id="@+id/transactionRV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

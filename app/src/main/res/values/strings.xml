@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">BudgetEx</string>
+
+    <string-array name="expense_filed_names">
+        <item>Travel</item>
+        <item>Meal</item>
+        <item>Coke</item>
+
+        <item>FastFood</item>
+        <item>Flexi</item>
+        <item>Waste</item>
+
+        <item>Edu</item>
+        <item>Health</item>
+        <item>Savings</item>
+
+        <item>Charity</item>
+        <item>Utilities</item>
+        <item>Rent</item>
+
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="transaction_dates">
+        <item>10 Aug, 2022</item>
+        <item>11 Aug, 2022</item>
+        <item>12 Aug, 2022</item>
+
+        <item>13 Aug, 2022</item>
+        <item>14 Aug, 2022</item>
+        <item>15 Aug, 2022</item>
+
+        <item>16 Sept, 2022</item>
+        <item>17 Sept, 2022</item>
+        <item>18 Sept, 2022</item>
+
+        <item>19 Sept, 2022</item>
+        <item>20 Oct, 2022</item>
+        <item>21 Oct, 2022</item>
+
+        <item>22 Oct, 2022</item>
+
+    </string-array>
+
+    <string-array name="transaction_amount">
+        <item>BDT 90</item>
+        <item>BDT 190</item>
+        <item>BDT 290</item>
+
+        <item>BDT 3390</item>
+        <item>BDT 930</item>
+        <item>BDT 920</item>
+
+        <item>BDT 1910</item>
+        <item>BDT 9230</item>
+        <item>BDT 910</item>
+
+        <item>BDT 9120</item>
+        <item>BDT 930</item>
+        <item>BDT 190 </item>
+        <item>BDT 190 </item>
+
+    </string-array>
+
+
+</resources>

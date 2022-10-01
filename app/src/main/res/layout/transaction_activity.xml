@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:weightSum="12"
+    android:paddingVertical="10dp"
+    android:paddingRight="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:background="@drawable/exp_img_bg"
+            android:gravity="center"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:orientation="horizontal">
+            <ImageView
+
+            android:layout_gravity="center"
+            android:id="@+id/transactionIconIV"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            app:srcCompat="@drawable/ic_add" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:paddingLeft="6dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="6"
+        android:orientation="vertical">
+
+        <TextView
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:id="@+id/transactionFieldNameTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Utilities Bill" />
+
+        <TextView
+            android:id="@+id/transactionDetailsTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/bg_gray"
+            android:textSize="11sp"
+            android:text="details" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_weight="4"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/transactionAmountTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BDT 180.00"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:textAlignment="textEnd"
+            android:id="@+id/transactionDateTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="16 Aug, 2022"
+            android:textColor="@color/bg_gray"
+            android:textSize="11sp" />
+    </LinearLayout>
+</LinearLayout>
