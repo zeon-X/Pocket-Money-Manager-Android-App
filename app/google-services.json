@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "255805827513",
+    "project_id": "budgetex-1903147",
+    "storage_bucket": "budgetex-1903147.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255805827513:android:0d8d23a1b8b8f575286e68",
+        "android_client_info": {
+          "package_name": "aleeha.com.example.bugdtEx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255805827513-2ab67am1259jnl2t2sdqm3rtmrff8vm4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7iPl_BN_-H1tetBvUrxuT5cobp6fEmIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255805827513-2ab67am1259jnl2t2sdqm3rtmrff8vm4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255805827513:android:9c962d6d3a925673286e68",
+        "android_client_info": {
+          "package_name": "com.aleeha.bugdtEx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255805827513-2ab67am1259jnl2t2sdqm3rtmrff8vm4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7iPl_BN_-H1tetBvUrxuT5cobp6fEmIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255805827513-2ab67am1259jnl2t2sdqm3rtmrff8vm4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

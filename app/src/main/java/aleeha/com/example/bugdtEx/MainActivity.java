@@ -1,5 +1,6 @@
 package aleeha.com.example.bugdtEx;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,26 +15,27 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     //Global Variables
     private int currentBalance=0;
-
     //BTN-S
-    private ImageView addMoneyTV;
-    private ImageView resetButtonIV;
-
+    private ImageView addMoneyTV, resetButtonIV;
     //TV
-    private TextView currentBalanceTV;
-    private TextView transactionDetailsTV;
-    private TextView seeAllTV;
-
-
+    private TextView currentBalanceTV,transactionDetailsTV,seeAllTV, userNameTV;
     //RecycleView Var
-    private RecyclerView expenseFieldsRV;
-    private RecyclerView transactionReportRV;
+    private RecyclerView expenseFieldsRV,transactionReportRV;
+    //LinearLayouts
+    private LinearLayout borrowBTN, lendBTN,reportBTN;
 
     //adapter variable
     ExpenseAdapterRV expenseAdapter;
@@ -55,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
 
     DataBaseTrans dbTrans;
 
+    GoogleSignInOptions gso;
+    GoogleSignInClient gsc;
+    GoogleSignInAccount account;
+
 
 
     @Override
@@ -66,18 +72,49 @@ public class MainActivity extends AppCompatActivity {
         fieldNames = getResources().getStringArray(R.array.expense_filed_names);
         transactionDates = getResources().getStringArray(R.array.transaction_dates);
         transactionAmount = getResources().getStringArray(R.array.transaction_amount);
-
         // RV
         expenseFieldsRV = findViewById(R.id.idRVExpenseFields);
         transactionReportRV = findViewById(R.id.transactionRV);
         // IV
         addMoneyTV = findViewById(R.id.addMoneyBTNIV);
         resetButtonIV = findViewById(R.id.resetBTN);
-
         //TV
         currentBalanceTV = findViewById(R.id.currentBalanceTV);
         transactionDetailsTV = findViewById(R.id.transactionDetailsTV);
         seeAllTV = findViewById(R.id.seeAllBTN);
+        userNameTV = findViewById(R.id.userNameTV);
+        //LL
+        reportBTN = findViewById(R.id.reportLL);
+        lendBTN = findViewById(R.id.lendLL);
+        borrowBTN = findViewById(R.id.borrowLL);
+
+
+
+        //---------------------GOOGLE AUTH DATA---------------------------------
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        gsc = GoogleSignIn.getClient(MainActivity.this,gso);
+
+        account = GoogleSignIn.getLastSignedInAccount(this);
+
+
+        if(account!=null){
+            userNameTV.setText(""+account.getDisplayName());
+            Toast.makeText(this, "Welcome "+account.getDisplayName(), Toast.LENGTH_SHORT).show();
+
+            resetButtonIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    SignOutUser();
+                }
+            });
+        }
+
+
+        //---------------------GOOGLE AUTH DATA---------------------------------
+
+
 
 
 
@@ -110,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
             else{
                 img[j] = addMoneyIcon;
             }
-
             currentBalance+=ta[j];
             ++j;
         }
@@ -121,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
         else if(currentBalance>0)  currentBalanceTV.setTextColor(Color.parseColor("#00FF00"));
 
         currentBalanceTV.setText("BDT "+Integer.toString(currentBalance)+".00");
-
+        //-----------!!!!!!!!!!!!! DATA FROM DB !!!!!!!!!!!!!!---------------
 
 
         //-------------------TRANSACTION ADAPTER START------------------------
@@ -146,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
         transactionAdapter.setOnItemClickListener(new TransactionAdapterRV.ClickListener() {
             @Override
             public void onItemClick(int position, View view) {
-                Toast.makeText(MainActivity.this, tt[0], Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, tt[position], Toast.LENGTH_SHORT).show();
             }
         });
         //-------------------TRANSACTION ADAPTER END------------------------
@@ -154,25 +190,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //--|||||||||||||||||||||| ONCLICK FUNC |||||||||||||||||||||||||||
 
-        addMoneyTV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,AddTransaction.class);
-                intent.putExtra("addMoney",1);
-
-                startActivity(intent);
-            }
-        });
-
-        seeAllTV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,SeeAllTransaction.class);
-                startActivity(intent);
-            }
-        });
 
 
 
@@ -202,11 +220,66 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
+        //--||||||||||||---------- ONCLICK FUNC IMPLEMENTATION ----------||||||||||||||||||
+
+        addMoneyTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,AddTransaction.class);
+                intent.putExtra("addMoney",1);
+
+                startActivity(intent);
+            }
+        });
+
+        seeAllTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,SeeAllTransaction.class);
+                startActivity(intent);
+            }
+        });
+
+        reportBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,Report.class);
+                startActivity(intent);
+            }
+        });
+
+        lendBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "To be implemented Soon", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        borrowBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "To be implemented Soon", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
     }
 
 
 
+    private void SignOutUser() {
+        gsc.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
 
+                Toast.makeText(MainActivity.this, "Signed Out", Toast.LENGTH_SHORT).show();
+                userNameTV.setText("Hello Cypher Stark");
+            }
+        });
+    }
 
 
 

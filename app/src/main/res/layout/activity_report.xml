@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="24dp"
+    android:layout_marginHorizontal="24dp"
+    tools:context=".Report">
+
+
+    <LinearLayout
+        android:elevation="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_marginBottom="12dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black_1"
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transaction Report" />
+        <View
+            android:layout_marginBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+        <LinearLayout
+            android:id="@+id/dailyReportLL"
+            android:paddingHorizontal="24dp"
+            android:gravity="center"
+            android:background="@drawable/report_item_bg"
+            android:backgroundTint="@color/black_2"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textColor="@color/white"
+                android:textStyle="normal"
+                android:textSize="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Daily Report" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:elevation="6dp"
+            android:id="@+id/weeklyReportLL"
+            android:paddingHorizontal="24dp"
+            android:gravity="center"
+            android:background="@drawable/report_item_bg"
+            android:backgroundTint="@color/black_2"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textColor="@color/white"
+                android:textStyle="normal"
+                android:textSize="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Weekly Report" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:elevation="6dp"
+            android:id="@+id/monthlyReportLL"
+            android:paddingHorizontal="24dp"
+            android:gravity="center"
+            android:background="@drawable/report_item_bg"
+            android:backgroundTint="@color/black_2"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textColor="@color/white"
+                android:textStyle="normal"
+                android:textSize="18dp"
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Monthly Report" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:elevation="6dp"
+            android:id="@+id/lendReportLL"
+            android:paddingHorizontal="24dp"
+            android:gravity="center"
+            android:background="@drawable/report_item_bg"
+            android:backgroundTint="@color/black_2"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textColor="@color/white"
+                android:textStyle="normal"
+                android:textSize="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Lend Report" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:elevation="6dp"
+            android:id="@+id/borrowReportLL"
+            android:paddingHorizontal="24dp"
+            android:gravity="center"
+            android:background="@drawable/report_item_bg"
+            android:backgroundTint="@color/black_2"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textColor="@color/white"
+                android:textStyle="normal"
+                android:textSize="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Borrow Report" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

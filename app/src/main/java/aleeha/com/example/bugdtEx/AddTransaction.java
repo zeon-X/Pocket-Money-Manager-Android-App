@@ -59,7 +59,7 @@ public class AddTransaction extends AppCompatActivity {
         String dateNow = "";
         String timeNow = "";
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MMMM dd,yyyy");
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MMM dd,yyyy");
             DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm");
 
             LocalDateTime newTime = LocalDateTime.now();
@@ -71,7 +71,7 @@ public class AddTransaction extends AppCompatActivity {
         }
         else{
             Date d = new Date();
-            dateNow  = DateFormat.format("MMMM d,yyyy", d.getTime()).toString();
+            dateNow  = DateFormat.format("MMM d,yyyy", d.getTime()).toString();
 
             dateTV.setText(dateNow);
         }
