@@ -90,8 +90,9 @@ public class SeeAllTransaction extends AppCompatActivity {
 
         transactionAdapter.setOnItemClickListener(new TransactionAdapterRV.ClickListener() {
             @Override
-            public void onItemClick(int position, View view) {
-                Toast.makeText(SeeAllTransaction.this, tt[0], Toast.LENGTH_SHORT).show();
+            public void onItemClick(int i, View view) {
+                DeleteOptionBottomSheetFragment deleteOptionBottomSheetFragment = new DeleteOptionBottomSheetFragment(SeeAllTransaction.this,fn[i],tDetails[i],td[i],tt[i],ta[i]);
+                deleteOptionBottomSheetFragment.show(getSupportFragmentManager(),deleteOptionBottomSheetFragment.getTag());
             }
         });
 

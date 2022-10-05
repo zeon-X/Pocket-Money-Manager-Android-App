@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+    android:paddingHorizontal="10dp"
+    tools:context=".DeleteOptionBottomSheetFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="vertical">
+        <View
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:layout_width="60dp"
+            android:layout_height="3dp"
+            android:background="@android:color/darker_gray"/>
+    </LinearLayout>
+
+    <TextView
+        android:textAlignment="center"
+        android:textColor="@color/bg_gray"
+        android:layout_marginBottom="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Transaction Details" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="@android:color/darker_gray" />
+
+    <LinearLayout
+        android:weightSum="12"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"/>
+        <LinearLayout
+            android:layout_weight="6"
+            android:gravity="start"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:id="@+id/fieldNameTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Utilities Bill" />
+
+            <TextView
+                android:id="@+id/transNoteTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/bg_gray"
+                android:textSize="13sp"
+                android:text="details" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"/>
+
+        <LinearLayout
+            android:padding="10dp"
+            android:gravity="start"
+            android:layout_weight="6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/transAmountTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BDT 180.00"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:textAlignment="textStart"
+                android:id="@+id/transDateTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="16 Aug, 2022"
+                android:textColor="@color/bg_gray"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
+
+<!--    EDIT BTN-->
+
+    <LinearLayout
+        android:paddingVertical="10dp"
+        android:gravity="center_vertical"
+        android:id="@+id/editBtn"
+        android:weightSum="12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <ImageView
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_edit_24" />
+        </LinearLayout>
+
+        <TextView
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:textColor="@color/black_2"
+            android:paddingLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:text="Edit" />
+    </LinearLayout>
+
+<!--    DELETE BTN-->
+    <LinearLayout
+        android:paddingVertical="10dp"
+        android:gravity="center_vertical"
+        android:id="@+id/deleteBtn"
+        android:weightSum="12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <ImageView
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_delete_24" />
+        </LinearLayout>
+
+        <TextView
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:textColor="@color/red"
+            android:paddingLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:text="Delete" />
+    </LinearLayout>
+
+    <!--    SHARE BTN-->
+    <LinearLayout
+        android:paddingVertical="10dp"
+        android:gravity="center_vertical"
+        android:id="@+id/shareBtn"
+        android:weightSum="12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <ImageView
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_share_24" />
+        </LinearLayout>
+
+        <TextView
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:textColor="@color/black_2"
+            android:paddingLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:text="Share" />
+    </LinearLayout>
+
+
+</LinearLayout>

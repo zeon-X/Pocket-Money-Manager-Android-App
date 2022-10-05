@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -128,6 +129,14 @@ public class DailyReport extends AppCompatActivity {
         );
         transactionReportRV.setAdapter(transactionAdapter);
         transactionReportRV.setLayoutManager(new LinearLayoutManager(this));
+
+        transactionAdapter.setOnItemClickListener(new TransactionAdapterRV.ClickListener() {
+            @Override
+            public void onItemClick(int i, View view) {
+                DeleteOptionBottomSheetFragment deleteOptionBottomSheetFragment = new DeleteOptionBottomSheetFragment(DailyReport.this,fn[i],tDetails[i],td[i],tt[i],ta[i]);
+                deleteOptionBottomSheetFragment.show(getSupportFragmentManager(),deleteOptionBottomSheetFragment.getTag());
+            }
+        });
 
 
     }
