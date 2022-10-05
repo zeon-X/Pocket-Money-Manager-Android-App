@@ -1,5 +1,8 @@
 ![Picture1](https://user-images.githubusercontent.com/73699852/193410165-c775f462-d784-4159-8eda-270d04a95bee.png)
 
+1) It's an Life-style App that tracks notes on daily transactions & presents reports on Daily/Weekly/Monthly basis. 
+2) This app become too popular as there are many people who can't track their daily expense/income money. This app provides that facilities in a more easy & sophisticated way. 
+
 Dashboard             |  Add Money         | See All Transactions  
 :-------------------------:|:-------------------------:|:-------------------------:
 
