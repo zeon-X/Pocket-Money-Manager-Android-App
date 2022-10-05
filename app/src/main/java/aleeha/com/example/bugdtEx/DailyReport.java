@@ -27,8 +27,9 @@ public class DailyReport extends AppCompatActivity {
     int [] images = {
             R.drawable.pic4,R.drawable.pic6,R.drawable.pic8,R.drawable.pic7,R.drawable.pic9,
             R.drawable.pic10,R.drawable.pic11,R.drawable.pic12,R.drawable.pic13,R.drawable.pic3,
-            R.drawable.pic2,R.drawable.pic1,R.drawable.pic14,R.drawable.pic15
+            R.drawable.pic2,R.drawable.pic1,R.drawable.pic16,R.drawable.pic14
     };
+    int addMoneyIcon = R.drawable.pic15,lendIcon = R.drawable.lending;
     String date_now,date_db;
 
     TransactionAdapterRV transactionAdapter;
@@ -99,11 +100,14 @@ public class DailyReport extends AppCompatActivity {
             tt[i] = everyTrans.get(j).getTime();
             tDetails[i] = everyTrans.get(j).getDescription();
 
-            if(everyTrans.get(j).getPosition()>=0){
-                img[i] = images[everyTrans.get(j).getPosition()];
+            if(everyTrans.get(i).getPosition()==-1){
+                img[j] = addMoneyIcon;
+            }
+            else if(everyTrans.get(i).getPosition()==-2){
+                img[j] = lendIcon;
             }
             else{
-                img[i] = images[13];
+                img[j] = images[everyTrans.get(i).getPosition()];
             }
 
             if(ta[i]>=0) totalAdded+=ta[i];

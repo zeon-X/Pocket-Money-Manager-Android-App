@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="24dp"
+    tools:context=".LendBorrowReport">
+
+    <LinearLayout
+        android:paddingHorizontal="18dp"
+        android:weightSum="12"
+        android:elevation="6dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/cardbground"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_gravity="center_vertical"
+            android:layout_weight="12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:id="@+id/lbBalanceTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lend Balance" />
+
+            <TextView
+                android:textStyle="bold"
+                android:textSize="32sp"
+                android:textColor="@color/white"
+                android:id="@+id/lbAmountTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BDT12000.00" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lbTransactionRV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+
+</LinearLayout>

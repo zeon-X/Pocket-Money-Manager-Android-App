@@ -47,13 +47,17 @@ public class Report extends AppCompatActivity {
         lendReportBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Report.this, "Function not implemented Yet", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Report.this,LendBorrowReport.class);
+                intent.putExtra("cat",1);
+                startActivity(intent);
             }
         });
         borrowReportBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Report.this, "Function not implemented Yet", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Report.this,LendBorrowReport.class);
+                intent.putExtra("cat",0);
+                startActivity(intent);
             }
         });
 

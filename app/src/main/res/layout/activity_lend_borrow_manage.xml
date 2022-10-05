@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="24dp"
+    android:scrollbars="none"
+    tools:context=".LendBorrowManage">
+
+    <LinearLayout
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:weightSum="12"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Transaction Field"
+                    android:textColor="@color/gray"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:textAlignment="textEnd"
+                    android:layout_weight="6"
+                    android:id="@+id/dateNow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10 Sept, 2022"
+                    android:textColor="@color/bg_gray"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:elevation="4dp"
+                android:paddingHorizontal="8dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/cardbground"
+                android:layout_marginVertical="12dp"
+                android:weightSum="12"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+
+
+                    <ImageView
+                        android:id="@+id/fieldLogo"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/pic4" />
+
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:paddingLeft="0dp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:id="@+id/fieldName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="9"
+                    android:text="Lend " />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginVertical="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/gray"
+                android:textAlignment="textStart"
+                android:id="@+id/enterAmountToField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter Amount to Lend" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginBottom="0dp"
+            android:elevation="0dp"
+            android:background="@drawable/add_trans_bg"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:background="@null"
+                android:textColor="@color/gray"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textSize="40sp"
+                android:hint="BDT100"
+                android:id="@+id/transAmount"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number" />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_marginTop="18dp"
+            android:elevation="0dp"
+            android:background="@drawable/add_trans_bg"
+            android:padding="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:background="@null"
+                android:textColor="@color/gray"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:hint="Add a Person Name"
+                android:id="@+id/toTransName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="18dp"
+            android:elevation="0dp"
+            android:background="@drawable/add_trans_bg"
+            android:padding="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="430dp"
+            android:orientation="vertical">
+
+
+            <CalendarView
+                android:id="@+id/calenderPicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="18sp"
+                android:textColor="@color/bg_gray"
+                android:gravity="center_horizontal"
+                android:id="@+id/returnDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pick a Date" />
+
+
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp"
+            android:elevation="0dp"
+            android:background="@drawable/add_trans_bg"
+            android:padding="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:background="@null"
+                android:textColor="@color/gray"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:hint="Add Some Transaction Note"
+                android:id="@+id/transNote"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
+        </LinearLayout>
+
+        <Button
+            android:layout_marginBottom="100dp"
+            android:paddingVertical="20dp"
+            android:elevation="6dp"
+            android:textSize="16sp"
+            android:textColor="@color/bg_gray"
+            android:background="@drawable/option_card_bg"
+            android:backgroundTint="@color/black_1"
+            android:id="@+id/addTransaction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Transaction" />
+
+
+
+
+    </LinearLayout>
+</ScrollView>

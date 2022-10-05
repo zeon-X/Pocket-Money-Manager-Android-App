@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:weightSum="12"
+    android:paddingVertical="10dp"
+    android:paddingHorizontal="5dp"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/divider_rv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="6"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="6dp">
+
+            <TextView
+                android:id="@+id/personNameTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jamil Faysal"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:id="@+id/issueDateTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Issue Date: 16 Aug, 2022"
+                android:textAlignment="textStart"
+                android:textColor="@color/black_2"
+                android:textSize="13sp" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:paddingRight="6dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/issueAmountTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BDT 1180000"
+                android:textAlignment="textEnd"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:textStyle="bold"
+                android:textAlignment="textEnd"
+                android:layout_marginTop="5dp"
+                android:id="@+id/returnDateTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Return Date: 10 Oct,2022"
+                android:textColor="@color/black_2"
+                android:textSize="13sp" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginVertical="10dp"
+        android:paddingHorizontal="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="6"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/noteTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/bg_gray"
+            android:textSize="13sp"
+            android:text="Note" />
+    </LinearLayout>
+
+
+</LinearLayout>

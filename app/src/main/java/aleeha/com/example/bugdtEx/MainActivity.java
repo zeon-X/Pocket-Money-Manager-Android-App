@@ -45,9 +45,9 @@ public class MainActivity extends AppCompatActivity {
     int [] images = {
             R.drawable.pic4,R.drawable.pic6,R.drawable.pic8,R.drawable.pic7,R.drawable.pic9,
             R.drawable.pic10,R.drawable.pic11,R.drawable.pic12,R.drawable.pic13,R.drawable.pic3,
-            R.drawable.pic2,R.drawable.pic1,R.drawable.pic14
+            R.drawable.pic2,R.drawable.pic1,R.drawable.pic16,R.drawable.pic14
     };
-    int addMoneyIcon = R.drawable.pic15;
+    int addMoneyIcon = R.drawable.pic15,lendIcon = R.drawable.lending;
     String [] fieldNames;
     String [] transactionDates,transactionAmount;
 
@@ -141,11 +141,15 @@ public class MainActivity extends AppCompatActivity {
             td[j] = everyTrans.get(i).getDate();
             tt[j] = everyTrans.get(i).getTime();
             tDetails[j] = everyTrans.get(i).getDescription();
-            if(everyTrans.get(i).getPosition()>=0){
-                img[j] = images[everyTrans.get(i).getPosition()];
+            if(everyTrans.get(i).getPosition()==-1){
+                img[j] = addMoneyIcon;
+            }
+            else if(everyTrans.get(i).getPosition()==-2){
+                img[j] = lendIcon;
+
             }
             else{
-                img[j] = addMoneyIcon;
+                img[j] = images[everyTrans.get(i).getPosition()];
             }
             currentBalance+=ta[j];
             ++j;
@@ -253,14 +257,22 @@ public class MainActivity extends AppCompatActivity {
         lendBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "To be implemented Soon", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,LendBorrowManage.class);
+                intent.putExtra("fieldName","Lend");
+                intent.putExtra("fieldIcon",R.drawable.pic14);
+                intent.putExtra("returnWhat","Pick a Collection Date");
+                startActivity(intent);
             }
         });
 
         borrowBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "To be implemented Soon", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,LendBorrowManage.class);
+                intent.putExtra("fieldName","Borrow");
+                intent.putExtra("fieldIcon",R.drawable.pic13);
+                intent.putExtra("returnWhat","Pick a Return Date");
+                startActivity(intent);
             }
         });
 
@@ -315,11 +327,15 @@ public class MainActivity extends AppCompatActivity {
             ta[j] = everyTrans.get(i).getTransAmount();
             td[j] = everyTrans.get(i).getDate();
             tt[j] = everyTrans.get(i).getTime();
-            if(everyTrans.get(i).getPosition()>=0){
-                img[j] = images[everyTrans.get(i).getPosition()];
+            if(everyTrans.get(i).getPosition()==-1){
+                img[j] = addMoneyIcon;
+            }
+            else if(everyTrans.get(i).getPosition()==-2){
+                img[j] = lendIcon;
+
             }
             else{
-                img[j] = addMoneyIcon;
+                img[j] = images[everyTrans.get(i).getPosition()];
             }
             tDetails[j] = everyTrans.get(i).getDescription();
             currentBalance+=ta[j];
