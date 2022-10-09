@@ -44,10 +44,8 @@ public class DataBaseTrans extends SQLiteOpenHelper {
 
     // create || insert data
     public boolean addOne(TransactionModel transactionModel){
-
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-
         cv.put(COLUMN_FIELD,transactionModel.getExpenseField());
         cv.put(COLUMN_AMOUNT,transactionModel.getTransAmount());
         cv.put(COLUMN_DATE,transactionModel.getDate());
@@ -57,19 +55,15 @@ public class DataBaseTrans extends SQLiteOpenHelper {
         cv.put(COLUMN_POSITION,transactionModel.getPosition());
 
         long insert = db.insert(TRANSACTION_TABLE, null, cv);
-
         if(insert == -1) return false;
         else return true;
     }
 
     // read data
     public List<TransactionModel> getEveryOne(){
-
         List<TransactionModel> returnList = new ArrayList<>();
         String queryString = "SELECT * FROM " + TRANSACTION_TABLE;
-
         SQLiteDatabase db = this.getReadableDatabase();
-
         try{
             Cursor cursor = db.rawQuery(queryString,null);
             if (cursor.moveToFirst()) {
@@ -83,44 +77,29 @@ public class DataBaseTrans extends SQLiteOpenHelper {
                     String description = cursor.getString(5);
                     Boolean isAdded = cursor.getInt(6)==1 ? true : false;
                     int position = cursor.getInt(7);
-
-                    TransactionModel newTransaction = new TransactionModel(-1,fieldName,amount,date,time,description,isAdded,position);
+                    TransactionModel newTransaction = new TransactionModel(id,fieldName,amount,date,time,description,isAdded,position);
                     returnList.add(newTransaction);
                 }
                 while (cursor.moveToNext());
-            } else {
-
-            }
-
+            } else {}
             cursor.close();
             db.close();
         }
-        catch (Exception e){
-
-        }
+        catch (Exception e){}
         return returnList;
     }
 
 
     //delete data
-    ///*
-
-    public boolean deleteOne(TransactionModel transactionModel){
-
+    public boolean deleteOne(Context c, int id){
         SQLiteDatabase db = this.getWritableDatabase();
-        String queryString = "DELETE FROM "+ TRANSACTION_TABLE + " WHERE " + COLUMN_ID + " = " + transactionModel.getId();
-
+        String ID = Integer.toString(id);
+        String queryString = "DELETE FROM "+ TRANSACTION_TABLE + " WHERE " + COLUMN_ID + " = "+ID ;
         Cursor cursor = db.rawQuery(queryString, null);
-
-        if(cursor.moveToFirst()){
-            return true;
-        }
-        else{
-            return  false;
-        }
+        if(cursor.moveToFirst()) return true;
+        else return false;
     }
 
-     //*/
 
 
 }

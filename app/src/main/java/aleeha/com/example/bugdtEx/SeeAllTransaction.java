@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +17,6 @@ public class SeeAllTransaction extends AppCompatActivity {
     private RecyclerView transactionReportRV;
     TransactionAdapterRV transactionAdapter;
 
-
     // local data
     int [] images = {
             R.drawable.pic4,R.drawable.pic6,R.drawable.pic8,R.drawable.pic7,R.drawable.pic9,
@@ -25,13 +25,9 @@ public class SeeAllTransaction extends AppCompatActivity {
     };
     int addMoneyIcon = R.drawable.pic15,lendIcon=R.drawable.lending;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_see_all_transaction);
 
-        transactionReportRV = findViewById(R.id.transactionRV);
 
+    public void showAllTransactions(){
         DataBaseTrans dbTrans = new DataBaseTrans(SeeAllTransaction.this);
         List<TransactionModel> everyTrans = dbTrans.getEveryOne();
 
@@ -43,6 +39,7 @@ public class SeeAllTransaction extends AppCompatActivity {
         String[] tDetails = new String[len];
         int[] ta = new int[len];
         int[] img = new int[len];
+        int[] id = new int[len];
 
         int j=0;
         for(int i=len-1; i >=0; --i){
@@ -50,60 +47,57 @@ public class SeeAllTransaction extends AppCompatActivity {
             ta[j] = everyTrans.get(i).getTransAmount();
             td[j] = everyTrans.get(i).getDate();
             tt[j] = everyTrans.get(i).getTime();
+            id[j] = everyTrans.get(i).getId();
+            if(everyTrans.get(i).getPosition()==-1)img[j] = addMoneyIcon;
+            else if(everyTrans.get(i).getPosition()==-2) img[j] = lendIcon;
+            else img[j] = images[everyTrans.get(i).getPosition()];
             tDetails[j] = everyTrans.get(i).getDescription();
-            if(everyTrans.get(i).getPosition()==-1){
-                img[j] = addMoneyIcon;
-            }
-            else if(everyTrans.get(i).getPosition()==-2){
-                img[j] = lendIcon;
-            }
-            else{
-                img[j] = images[everyTrans.get(i).getPosition()];
-            }
-
             ++j;
         }
 
 
-
-
-
-        //work done
-        // what i need to do
-        // 1) take the everyone array and
-        //    split it into such 4 array like
-        //    || fieldNames,transactionDates,transactionAmount,images ||
-
-
-        //-------------------TRANSACTION ADAPTER START------------------------
-        transactionAdapter = new TransactionAdapterRV(this,
-                fn,
-                td,
-                tt,
-                ta,
-                img,
-                tDetails
-        );
-        transactionReportRV.setAdapter(transactionAdapter);
-        transactionReportRV.setLayoutManager(new LinearLayoutManager(this));
-
+        TransactionAdapterRV transactionAdapter =
+                new TransactionAdapterRV(SeeAllTransaction.this, fn, td, tt, ta, img, tDetails);
 
         transactionAdapter.setOnItemClickListener(new TransactionAdapterRV.ClickListener() {
             @Override
             public void onItemClick(int i, View view) {
-                DeleteOptionBottomSheetFragment deleteOptionBottomSheetFragment = new DeleteOptionBottomSheetFragment(SeeAllTransaction.this,fn[i],tDetails[i],td[i],tt[i],ta[i]);
-                deleteOptionBottomSheetFragment.show(getSupportFragmentManager(),deleteOptionBottomSheetFragment.getTag());
+                DeleteOptionBottomSheetFragment DOBSF = new DeleteOptionBottomSheetFragment(SeeAllTransaction.this,id[i],fn[i],tDetails[i],td[i],tt[i],ta[i]);
+                DOBSF.show(getSupportFragmentManager(),DOBSF.getTag());
+                showAllTransactions();
             }
         });
 
-        /*
-        transactionReportRV.setLayoutManager(new LinearLayoutManager(this){
-                @Override
-                public boolean canScrollVertically() {
-                return false;
-                }
-        });
-         */
-        //-------------------TRANSACTION ADAPTER END------------------------
+        transactionReportRV.setAdapter(transactionAdapter);
+        transactionReportRV.setLayoutManager(new LinearLayoutManager(this));
+
+//        return transactionAdapter;
+    }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_see_all_transaction);
+
+        //||||||||||||||||||--- TRANSACTION ADAPTER
+        transactionReportRV = findViewById(R.id.transactionRV);
+        showAllTransactions();
+//        transactionAdapter = getTransactionAdapter();
+//        transactionReportRV.setAdapter(transactionAdapter);
+//        transactionReportRV.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        //||||||||||||||||||--- TRANSACTION ADAPTER
+        transactionReportRV = findViewById(R.id.transactionRV);
+        showAllTransactions();
+//        transactionAdapter = getTransactionAdapter();
+//        transactionReportRV.setAdapter(transactionAdapter);
+//        transactionReportRV.setLayoutManager(new LinearLayoutManager(this));
     }
 }

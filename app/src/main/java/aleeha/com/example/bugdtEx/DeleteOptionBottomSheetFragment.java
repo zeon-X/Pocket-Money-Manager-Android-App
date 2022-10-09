@@ -1,10 +1,13 @@
 package aleeha.com.example.bugdtEx;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -16,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -23,12 +27,15 @@ import java.util.Locale;
  * Use the {@link DeleteOptionBottomSheetFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DeleteOptionBottomSheetFragment extends BottomSheetDialogFragment {
+
+public class DeleteOptionBottomSheetFragment extends BottomSheetDialogFragment implements DialogInterface.OnDismissListener {
 
     Context context;
-    String fieldName,note,tt,transDate; int transAmount;
+    String fieldName,note,tt,transDate; int transAmount,id;
     TextView tv_fn,tv_note,tv_td,tv_tt,tv_ta;
     LinearLayout ll_dltBtn,ll_editBtn, ll_shareBtn;
+    boolean b = false;
+
 
     public DeleteOptionBottomSheetFragment() {
         // Required empty public constructor
@@ -37,15 +44,19 @@ public class DeleteOptionBottomSheetFragment extends BottomSheetDialogFragment {
         transDate = "transDate";
         transAmount =0;
     }
-
-    public DeleteOptionBottomSheetFragment(Context context, String fieldName, String note, String transDate, String tt,int transAmount) {
+    public DeleteOptionBottomSheetFragment(Context context, int id, String fieldName, String note,
+                                           String transDate, String tt,int transAmount)
+    {
         this.context = context;
         this.fieldName = fieldName;
         this.note = note;
+        this.id=id;
         this.tt = tt;
         this.transDate = transDate;
         this.transAmount = transAmount;
     }
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -83,18 +94,11 @@ public class DeleteOptionBottomSheetFragment extends BottomSheetDialogFragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)  {
-
-
-
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_delete_option_bottom_sheet, container, false);
         tv_fn = view.findViewById(R.id.fieldNameTV);
@@ -120,26 +124,26 @@ public class DeleteOptionBottomSheetFragment extends BottomSheetDialogFragment {
         ll_dltBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "dltBtn Clicked...", Toast.LENGTH_SHORT).show();
+                DataBaseTrans dbTrans = new DataBaseTrans(context);
+                b = dbTrans.deleteOne(context,id);
+                b = true;
+                dismiss();
             }
         });
         ll_editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "editBtn Clicked...", Toast.LENGTH_SHORT).show();
+                dismiss();
             }
         });
         ll_shareBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "shareBtn Clicked...", Toast.LENGTH_SHORT).show();
+                dismiss();
             }
         });
-
-
         return view;
     }
-
-
-
 }

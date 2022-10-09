@@ -23,7 +23,6 @@ import java.util.Date;
 import java.util.List;
 
 public class AddTransaction extends AppCompatActivity {
-
     ImageView catIconIV;
     TextView catNameTV,dateTV,availAmountTV;
     EditText transAmountET, transDetailsET;
@@ -37,16 +36,12 @@ public class AddTransaction extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_transaction);
-
         catIconIV = findViewById(R.id.transIconIV);
-
         catNameTV = findViewById(R.id.transNameTV);
         dateTV = findViewById(R.id.transDateTV);
         availAmountTV = findViewById(R.id.availAmountTV);
-
         transAmountET = findViewById(R.id.transAmountET);
         transDetailsET = findViewById(R.id.transDescriptionET);
-
         addTransBTN = findViewById(R.id.addTransBTN);
 
 
@@ -61,18 +56,14 @@ public class AddTransaction extends AppCompatActivity {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MMM dd,yyyy");
             DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm");
-
             LocalDateTime newTime = LocalDateTime.now();
-
             dateNow = newTime.format(dateFormat);
             timeNow = newTime.format(timeFormat);
-
             dateTV.setText(dateNow + " " + timeNow);
         }
         else{
             Date d = new Date();
             dateNow  = DateFormat.format("MMM d,yyyy", d.getTime()).toString();
-
             dateTV.setText(dateNow);
         }
 
@@ -81,7 +72,6 @@ public class AddTransaction extends AppCompatActivity {
 
         // RECEIVING PUT EXTRA DATA
         Bundle bundle = getIntent().getExtras();
-
         if(bundle!=null){
             availAmountTV.setText("Available Balance: BDT " + currentBalance + ".00");
             if(bundle.getInt("addMoney")==1){
@@ -134,14 +124,12 @@ public class AddTransaction extends AppCompatActivity {
                                     );
                         }
                         //Toast.makeText(AddTransaction.this, transactionModel.toString()+"", Toast.LENGTH_SHORT).show();
-
                 } catch (Exception e){
                     Toast.makeText(AddTransaction.this, "Put some numbers & try again...", Toast.LENGTH_SHORT).show();
                 }
 
                 DataBaseTrans dataBaseTrans = new DataBaseTrans(AddTransaction.this);
                 boolean b = dataBaseTrans.addOne(transactionModel);
-
                 if(b==true) {
                     Toast.makeText(AddTransaction.this, "Success", Toast.LENGTH_SHORT).show();
                     finish();
