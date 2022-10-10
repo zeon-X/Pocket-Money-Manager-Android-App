@@ -100,6 +100,15 @@ public class DataBaseTrans extends SQLiteOpenHelper {
         else return false;
     }
 
+    //deleteAll
+    public boolean delete_db(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String queryString = "DELETE FROM "+ TRANSACTION_TABLE;
+        Cursor cursor = db.rawQuery(queryString, null);
+        if(cursor.moveToFirst()) return true;
+        else return false;
+    }
+
 
 
 }

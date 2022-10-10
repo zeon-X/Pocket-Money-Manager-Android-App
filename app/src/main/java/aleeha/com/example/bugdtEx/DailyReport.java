@@ -105,6 +105,8 @@ public class DailyReport extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_report);
 
+        totalAdded=0; totalExpense=0;
+
         transactionReportRV = findViewById(R.id.transactionRV);
         totalExpenseTV = findViewById(R.id.totalExpense);
         totalAddedTV = findViewById(R.id.totalAdded);
@@ -131,6 +133,8 @@ public class DailyReport extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        totalAdded=0; totalExpense=0;
 
         transactionReportRV = findViewById(R.id.transactionRV);
         totalExpenseTV = findViewById(R.id.totalExpense);

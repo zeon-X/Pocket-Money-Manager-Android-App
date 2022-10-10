@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
@@ -47,7 +48,7 @@ public class Intro extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-    SignInButton signInButton;
+    private LinearLayout signInButton;
     private static final String TAG = "204";
 
     GoogleSignInOptions gso;

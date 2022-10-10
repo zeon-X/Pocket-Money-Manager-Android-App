@@ -17,69 +17,110 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_marginTop="130dp"
-            android:textAlignment="center"
-            android:textStyle="bold"
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Having Issue with Money Management" />
+<!--        <TextView-->
+<!--            android:textColor="@color/bg_gray"-->
+<!--            android:layout_marginTop="130dp"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textStyle="normal"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Having Issue with Money Management" />-->
 
         <ImageView
+
             android:layout_gravity="center"
             android:id="@+id/imageView"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="150dp"
             android:layout_width="240dp"
             android:layout_height="240dp"
-            android:src="@drawable/intro01"
+            android:src="@drawable/icon001"
             />
     </LinearLayout>
 
     <LinearLayout
         android:layout_marginTop="80dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
             android:textAlignment="center"
             android:textStyle="bold"
             android:layout_marginTop="0dp"
-            android:textSize="20sp"
-            android:textColor="@color/gray"
-            android:id="@+id/textView4"
+            android:textSize="24sp"
+            android:textColor="@color/bg_gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/intro1" />
 
         <TextView
+            android:layout_marginHorizontal="8dp"
             android:paddingHorizontal="20dp"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:layout_marginTop="10dp"
-            android:textSize="14sp"
-            android:textColor="@color/gray"
+            android:textSize="11sp"
+            android:textColor="@color/black_2"
             android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/intro2" />
 
-        <com.google.android.gms.common.SignInButton
-            android:layout_marginTop="40dp"
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingBottom="10dp"
+        android:layout_marginTop="108dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="14dp"
+            android:text="sign in with Google"
+            android:textColor="@color/bg_gray"
+            android:textSize="10sp"
+            android:textStyle="normal" />
+
+        <LinearLayout
             android:id="@+id/sign_in_button"
-            >
-
-        </com.google.android.gms.common.SignInButton>
-
-        <Button
-            android:paddingVertical="18dp"
-            android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Skip" />
+            android:layout_marginHorizontal="14dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/card_lift_bg"
+            android:backgroundTint="@color/black_2"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingVertical="12dp">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="4dp"
+                    app:srcCompat="@drawable/google" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="4dp"
+                    android:text="Sign in"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

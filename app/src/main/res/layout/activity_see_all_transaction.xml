@@ -9,22 +9,55 @@
     android:paddingBottom="0dp"
     tools:context=".SeeAllTransaction">
 
-    <TextView
+    <LinearLayout
+        android:weightSum="12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="10dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/black_1"
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="All Transaction Activity" />
+        android:orientation="horizontal">
 
-    <View
-        android:layout_marginBottom="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"/>
+        <TextView
+            android:layout_weight="9"
+            android:id="@+id/textView6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="All Transactions"
+            android:textColor="@color/black_1"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_gravity="center"
+            android:id="@+id/refreshBTN"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:elevation="6dp"
+            android:paddingVertical="3dp"
+            android:paddingHorizontal="5dp"
+            android:background="@drawable/card_lift_bg"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_restart"
+                app:tint="@color/gray" />
+
+            <TextView
+                android:textSize="11sp"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textColor="@color/black_2"
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Refresh" />
+        </LinearLayout>
+    </LinearLayout>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/transactionRV"

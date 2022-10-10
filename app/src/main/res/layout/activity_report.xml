@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
+    android:scrollbars="none"
     android:layout_marginHorizontal="24dp"
     tools:context=".Report">
 
@@ -144,6 +144,30 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Borrow Report" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:elevation="6dp"
+            android:id="@+id/resetEveryThingLL"
+            android:paddingHorizontal="24dp"
+            android:gravity="center"
+            android:background="@drawable/report_item_bg"
+            android:backgroundTint="@color/black_2"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginBottom="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textColor="@color/white"
+                android:textStyle="normal"
+                android:textSize="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Reset Everything" />
 
 
         </LinearLayout>

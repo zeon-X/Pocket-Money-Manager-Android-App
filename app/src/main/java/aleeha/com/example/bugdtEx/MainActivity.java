@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
 
     //Variables
     private int currentBalance=0;
-    private ImageView addMoneyTV, resetButtonIV;
+    private ImageView addMoneyTV;
     private TextView currentBalanceTV,transactionDetailsTV,seeAllTV, userNameTV;
     private RecyclerView expenseFieldsRV,transactionReportRV;
-    private LinearLayout borrowBTN, lendBTN,reportBTN;
+    private LinearLayout borrowBTN, lendBTN,reportBTN,refreshBTN;
     ExpenseAdapterRV expenseAdapter;
     TransactionAdapterRV transactionAdapter;
 
@@ -99,6 +99,31 @@ public class MainActivity extends AppCompatActivity {
 //        return transactionAdapter;
     }
 
+    public void showTrans(){
+        DataBaseTrans dbTrans = new DataBaseTrans(this);
+        List<TransactionModel> everyTrans = dbTrans.getEveryOne();
+
+        //SETTING CURRENT BALANCE
+        for(int i=0; i<everyTrans.size();++i) currentBalance+=everyTrans.get(i).getTransAmount();
+        if(currentBalance<0)currentBalanceTV.setTextColor(Color.parseColor("#FF0000"));
+        else if(currentBalance>0)  currentBalanceTV.setTextColor(Color.parseColor("#00FF00"));
+        currentBalanceTV.setText("BDT "+Integer.toString(currentBalance)+".00");
+
+        TransactionAdapterUpgraded transactionAdapter = new TransactionAdapterUpgraded(this, everyTrans);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        transactionAdapter.setOnItemClickListener(new TransactionAdapterUpgraded.ClickListener() {
+            @Override
+            public void onItemClick(int i, View view) {
+                Toast.makeText(MainActivity.this, "clicked..", Toast.LENGTH_SHORT).show();
+            }
+        });
+        transactionReportRV.setAdapter(transactionAdapter);
+        transactionReportRV.setLayoutManager(linearLayoutManager);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         expenseFieldsRV = findViewById(R.id.idRVExpenseFields);
         transactionReportRV = findViewById(R.id.transactionRV);
         addMoneyTV = findViewById(R.id.addMoneyBTNIV);
-        resetButtonIV = findViewById(R.id.resetBTN);
+        refreshBTN = findViewById(R.id.refreshBTNLL);
         currentBalanceTV = findViewById(R.id.currentBalanceTV);
         transactionDetailsTV = findViewById(R.id.transactionDetailsTV);
         seeAllTV = findViewById(R.id.seeAllBTN);
@@ -129,26 +154,21 @@ public class MainActivity extends AppCompatActivity {
         if(account!=null){
             userNameTV.setText(""+account.getDisplayName());
             Toast.makeText(this, "Welcome "+account.getDisplayName(), Toast.LENGTH_SHORT).show();
+            /*
             resetButtonIV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     SignOutUser();
                 }
             });
+            */
         }
 
 
 
         //||||||||||||||||||--- TRANSACTION ADAPTER
         showAllTransactions();
-//        transactionAdapter = getTransactionAdapter();
-//        transactionReportRV.setAdapter(transactionAdapter);
-//        transactionReportRV.setLayoutManager(new LinearLayoutManager(this));
-
-
-
-
-
+        //showTrans();
 
 
         //||||||||||||||||||---EXPENSE FIELD ADAPTER START
@@ -221,6 +241,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        refreshBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Refresh..", Toast.LENGTH_SHORT).show();
+                currentBalance=0;
+                showAllTransactions();
+            }
+        });
     }
 
     //SIGN OUT BTN CLICK
@@ -247,6 +276,6 @@ public class MainActivity extends AppCompatActivity {
 
         //TRANSACTION ADAPTER
         showAllTransactions();
-
+        //showTrans();
     }
 }

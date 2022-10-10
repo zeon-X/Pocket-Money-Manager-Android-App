@@ -25,7 +25,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_weight="10"
+                android:layout_weight="7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -49,18 +49,34 @@
                     android:text="Welcome Back!" />
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/resetBTN"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_margin="8dp"
-                android:layout_weight="2"
-                android:background="@drawable/card_lift_bg"
+            <LinearLayout
+                android:id="@+id/refreshBTNLL"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
                 android:elevation="6dp"
-                android:padding="4dp"
-                app:srcCompat="@drawable/ic_logout"
-                app:tint="@color/gray" />
+                android:paddingVertical="3dp"
+                android:paddingHorizontal="5dp"
+                android:background="@drawable/card_lift_bg"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/ic_restart"
+                    app:tint="@color/gray" />
+
+                <TextView
+                    android:textSize="11sp"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/black_2"
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Refresh" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout

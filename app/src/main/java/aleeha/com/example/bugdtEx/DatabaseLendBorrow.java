@@ -95,4 +95,12 @@ public class DatabaseLendBorrow extends SQLiteOpenHelper {
         return  returnList;
     }
 
+    public boolean delete_db(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String queryString = "DELETE FROM "+ TABLE_NAME;
+        Cursor cursor = db.rawQuery(queryString, null);
+        if(cursor.moveToFirst()) return true;
+        else return false;
+    }
+
 }

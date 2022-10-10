@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class SeeAllTransaction extends AppCompatActivity {
 
     private RecyclerView transactionReportRV;
     TransactionAdapterRV transactionAdapter;
+    private LinearLayout refreshBTN;
 
     // local data
     int [] images = {
@@ -80,12 +82,24 @@ public class SeeAllTransaction extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_see_all_transaction);
 
+        refreshBTN = findViewById(R.id.refreshBTN);
+
         //||||||||||||||||||--- TRANSACTION ADAPTER
         transactionReportRV = findViewById(R.id.transactionRV);
         showAllTransactions();
 //        transactionAdapter = getTransactionAdapter();
 //        transactionReportRV.setAdapter(transactionAdapter);
 //        transactionReportRV.setLayoutManager(new LinearLayoutManager(this));
+
+
+
+        refreshBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(SeeAllTransaction.this, "Refresh clicked..", Toast.LENGTH_SHORT).show();
+                showAllTransactions();
+            }
+        });
     }
 
 

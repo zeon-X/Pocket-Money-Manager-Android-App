@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 public class Report extends AppCompatActivity {
 
-    private LinearLayout dailyReportBTN,weeklyReportBTN,monthlyReportBTN,lendReportBTN,borrowReportBTN;
+    private LinearLayout dailyReportBTN,weeklyReportBTN,monthlyReportBTN,lendReportBTN,borrowReportBTN,resetBTN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,7 @@ public class Report extends AppCompatActivity {
         monthlyReportBTN = findViewById(R.id.monthlyReportLL);
         lendReportBTN = findViewById(R.id.lendReportLL);
         borrowReportBTN = findViewById(R.id.borrowReportLL);
+        resetBTN = findViewById(R.id.resetEveryThingLL);
 
         dailyReportBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +59,20 @@ public class Report extends AppCompatActivity {
                 Intent intent = new Intent(Report.this,LendBorrowReport.class);
                 intent.putExtra("cat",0);
                 startActivity(intent);
+            }
+        });
+
+        resetBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                DataBaseTrans db_trans = new DataBaseTrans(Report.this);
+                boolean b1 = db_trans.delete_db();
+
+                DatabaseLendBorrow db_lb = new DatabaseLendBorrow(Report.this);
+                boolean b = db_lb.delete_db();
+
+                Toast.makeText(Report.this, "Reset Successful", Toast.LENGTH_SHORT).show();
             }
         });
 

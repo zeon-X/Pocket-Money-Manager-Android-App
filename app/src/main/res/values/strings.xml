@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">BudgetEx</string>
 
-    <string name="intro1">Welcome To Budget-Ex</string>
-    <string name="intro2">Your daily budget expense manager helps you keep an track on your transactions.</string>
+    <string name="intro1">WELCOME TO BUDGET-EX</string>
+    <string name="intro2">Your Budget Expense Manager App Helps You Keep an Track on Your Daily Transactions. It`s an Life-Style App that Tracks Notes on Daily Transactions and Present Reports on Daily Weekly Monthly Basis.</string>
     <string-array name="expense_filed_names">
         <item>Travel</item>
         <item>Meal</item>
