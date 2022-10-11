@@ -66,14 +66,8 @@ public class Report extends AppCompatActivity {
         resetBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                DataBaseTrans db_trans = new DataBaseTrans(Report.this);
-                boolean b1 = db_trans.delete_db();
-
-                DatabaseLendBorrow db_lb = new DatabaseLendBorrow(Report.this);
-                boolean b = db_lb.delete_db();
-
-                Toast.makeText(Report.this, "Reset Successful", Toast.LENGTH_SHORT).show();
+                ResetFragment rf = new ResetFragment(Report.this);
+                rf.show(getSupportFragmentManager(),rf.getTag());
             }
         });
 
