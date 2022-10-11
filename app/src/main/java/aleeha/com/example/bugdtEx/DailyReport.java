@@ -19,6 +19,7 @@ import java.util.List;
 public class DailyReport extends AppCompatActivity {
 
     private RecyclerView transactionReportRV;
+    private TextView tv_todayReport;
     int totalAdded=0, totalExpense=0;
     int [] images = {
             R.drawable.pic4,R.drawable.pic6,R.drawable.pic8,R.drawable.pic7,R.drawable.pic9,
@@ -106,7 +107,7 @@ public class DailyReport extends AppCompatActivity {
         setContentView(R.layout.activity_daily_report);
 
         totalAdded=0; totalExpense=0;
-
+        tv_todayReport = findViewById(R.id.todayReport);
         transactionReportRV = findViewById(R.id.transactionRV);
         totalExpenseTV = findViewById(R.id.totalExpense);
         totalAddedTV = findViewById(R.id.totalAdded);
@@ -120,9 +121,9 @@ public class DailyReport extends AppCompatActivity {
             Date d = new Date();
             date_now  = DateFormat.format("MMM d,yyyy", d.getTime()).toString();
         }
-
         date_now = date_now.toString();
         date_now+="";
+        tv_todayReport.setText("Daily Report: " + date_now);
 
         showAllTransactions(date_now);
 //        transactionAdapter = getTransactionAdapter(date_now);

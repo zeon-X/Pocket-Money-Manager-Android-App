@@ -10,11 +10,11 @@
     tools:context=".DailyReport">
 
     <TextView
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="0dp"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/black_1"
-        android:id="@+id/textView6"
+        android:textColor="@color/bg_gray"
+        android:id="@+id/todayReport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Today's Transaction Activity" />

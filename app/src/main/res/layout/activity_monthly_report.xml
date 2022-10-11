@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="24dp"
+    android:layout_marginHorizontal="24dp"
+    tools:context=".MonthlyReport">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_marginBottom="0dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/bg_gray"
+            android:id="@+id/monthTransActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monthly Transaction Activity" />
+
+
+        <LinearLayout
+            android:layout_marginVertical="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="12"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:paddingVertical="20dp"
+                android:background="@drawable/report_item_bg"
+                android:backgroundTint="@color/black_2"
+                android:layout_marginRight="5dp"
+                android:layout_weight="6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/imageView2"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    app:srcCompat="@drawable/pic15" />
+
+                <TextView
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Add Money" />
+
+                <TextView
+                    android:textAlignment="center"
+                    android:id="@+id/reportAddMoneyTV"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/green"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:paddingVertical="20dp"
+                android:background="@drawable/report_item_bg"
+                android:backgroundTint="@color/black_2"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/imageView4"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    app:srcCompat="@drawable/pic9" />
+
+                <TextView
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:id="@+id/textView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Expense" />
+
+                <TextView
+                    android:textAlignment="center"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/red"
+                    android:id="@+id/reportExpenseTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="200" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:scrollbars="none"
+            android:id="@+id/monthlyReportRV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</LinearLayout>

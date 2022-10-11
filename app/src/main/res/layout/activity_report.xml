@@ -54,29 +54,30 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:elevation="6dp"
-            android:id="@+id/weeklyReportLL"
-            android:paddingHorizontal="24dp"
-            android:gravity="center"
-            android:background="@drawable/report_item_bg"
-            android:backgroundTint="@color/black_2"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
+<!--        <LinearLayout-->
+<!--            android:elevation="6dp"-->
+<!--            android:id="@+id/weeklyReportLL"-->
+<!--            android:paddingHorizontal="24dp"-->
+<!--            android:gravity="center"-->
+<!--            android:background="@drawable/report_item_bg"-->
+<!--            android:backgroundTint="@color/black_2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="120dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:orientation="horizontal">-->
 
-            <TextView
-                android:textColor="@color/white"
-                android:textStyle="normal"
-                android:textSize="18dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Weekly Report" />
+<!--            <TextView-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textStyle="normal"-->
+<!--                android:textSize="18dp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="Weekly Report" />-->
 
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
+
         <LinearLayout
             android:elevation="6dp"
             android:id="@+id/monthlyReportLL"
@@ -161,13 +162,13 @@
             android:orientation="horizontal">
 
             <TextView
-                android:textColor="@color/white"
-                android:textStyle="normal"
+                android:textColor="@color/bg_gray"
+                android:textStyle="bold"
                 android:textSize="18dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Reset Everything" />
+                android:text="Reset Everything (Danger)" />
 
 
         </LinearLayout>

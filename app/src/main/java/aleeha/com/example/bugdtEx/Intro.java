@@ -50,10 +50,12 @@ public class Intro extends AppCompatActivity {
 
     private LinearLayout signInButton;
     private static final String TAG = "204";
+//    private String c_Id="502255437116-eseg3g44vr473g0vg7df5luut5n3eoia.apps.googleusercontent.com";
 
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
     GoogleSignInAccount account;
+
 
 
     @Override
@@ -63,16 +65,38 @@ public class Intro extends AppCompatActivity {
 
         signInButton = findViewById(R.id.sign_in_button);
 
+        /*
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAuth = FirebaseAuth.getInstance();
+                signInRequest = BeginSignInRequest.builder()
+                        .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
+                                .setSupported(true)
+                                // Your server's client ID, not your Android client ID.
+                                .setServerClientId(getString(R.string.default_web_client_id))
+                                //.setServerClientId(c_Id)
+                                // Only show accounts previously used to sign in.
+                                .setFilterByAuthorizedAccounts(true)
+                                .build())
+                        .build();
+
+            }
+        });
+
+         */
+
+
+
+
+        ///*
+        //---------------------------------------------------------------
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
         gsc = GoogleSignIn.getClient(Intro.this,gso);
         account = GoogleSignIn.getLastSignedInAccount(this);
-
-
-        if(account!=null){
-            DashBoardActivity();
-        }
+        if(account!=null) DashBoardActivity();
         else{
             signInButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -81,13 +105,78 @@ public class Intro extends AppCompatActivity {
                 }
             });
         }
-
-
+        //*/
 
 
 
     }
 
+    /*
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
+    }
+
+    private void updateUI(FirebaseUser currentUser) {
+        if(currentUser!=null) DashBoardActivity();
+        else signIn();
+    }
+
+    private void signIn() {
+        Intent intent = gsc.getSignInIntent();
+        startActivityForResult(intent,100);
+    }
+    private void DashBoardActivity() {
+        finish();
+        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(intent);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==100){
+            SignInCredential googleCredential = null;
+            try {
+                googleCredential = oneTapClient.getSignInCredentialFromIntent(data);
+            } catch (ApiException e) {
+                e.printStackTrace();
+            }
+            String idToken = googleCredential.getGoogleIdToken();
+            if (idToken !=  null) {
+                // Got an ID token from Google. Use it to authenticate
+                // with Firebase.
+                AuthCredential firebaseCredential = GoogleAuthProvider.getCredential(idToken, null);
+                mAuth.signInWithCredential(firebaseCredential)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // Sign in success, update UI with the signed-in user's information
+                                    Log.d(TAG, "signInWithCredential:success");
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    updateUI(user);
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Log.w(TAG, "signInWithCredential:failure", task.getException());
+                                    updateUI(null);
+                                }
+                            }
+                        });
+            }
+
+        }
+    }
+
+
+     */
+
+
+    ///*
     private void signIn() {
         Intent intent = gsc.getSignInIntent();
         startActivityForResult(intent,100);
@@ -115,6 +204,8 @@ public class Intro extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
         startActivity(intent);
     }
+    //*/
+
 
 
 }

@@ -96,9 +96,9 @@ public class MainActivity extends AppCompatActivity {
 
         transactionReportRV.setAdapter(transactionAdapter);
         transactionReportRV.setLayoutManager(new LinearLayoutManager(this));
-//        return transactionAdapter;
     }
 
+    /*
     public void showTrans(){
         DataBaseTrans dbTrans = new DataBaseTrans(this);
         List<TransactionModel> everyTrans = dbTrans.getEveryOne();
@@ -123,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
         transactionReportRV.setAdapter(transactionAdapter);
         transactionReportRV.setLayoutManager(linearLayoutManager);
     }
+     */
 
 
     @Override
@@ -145,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         borrowBTN = findViewById(R.id.borrowLL);
 
 
-
+        ///*
         //||||||||||||||||||--- GOOGLE AUTH DATA
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsc = GoogleSignIn.getClient(MainActivity.this,gso);
@@ -154,15 +155,18 @@ public class MainActivity extends AppCompatActivity {
         if(account!=null){
             userNameTV.setText(""+account.getDisplayName());
             Toast.makeText(this, "Welcome "+account.getDisplayName(), Toast.LENGTH_SHORT).show();
-            /*
-            resetButtonIV.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    SignOutUser();
-                }
-            });
-            */
+
+//            resetButtonIV.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    SignOutUser();
+//                }
+//            });
         }
+        else{
+            userNameTV.setText("Hello Cypher Stark");
+        }
+        //*/
 
 
 

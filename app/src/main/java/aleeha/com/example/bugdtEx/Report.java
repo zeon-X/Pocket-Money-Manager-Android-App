@@ -18,7 +18,7 @@ public class Report extends AppCompatActivity {
         setContentView(R.layout.activity_report);
 
         dailyReportBTN = findViewById(R.id.dailyReportLL);
-        weeklyReportBTN = findViewById(R.id.weeklyReportLL);
+//        weeklyReportBTN = findViewById(R.id.weeklyReportLL);
         monthlyReportBTN = findViewById(R.id.monthlyReportLL);
         lendReportBTN = findViewById(R.id.lendReportLL);
         borrowReportBTN = findViewById(R.id.borrowReportLL);
@@ -33,16 +33,17 @@ public class Report extends AppCompatActivity {
         });
 
 
-        weeklyReportBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(Report.this, "Function not implemented Yet", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        weeklyReportBTN.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(Report.this, "Function not implemented Yet", Toast.LENGTH_SHORT).show();
+//            }
+//        });
         monthlyReportBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Report.this, "Function not implemented Yet", Toast.LENGTH_SHORT).show();
+                Intent intent  = new Intent(Report.this,MonthlyReport.class);
+                startActivity(intent);
             }
         });
         lendReportBTN.setOnClickListener(new View.OnClickListener() {
