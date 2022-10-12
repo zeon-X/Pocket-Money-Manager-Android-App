@@ -1,10 +1,13 @@
 package aleeha.com.example.bugdtEx;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -42,11 +45,14 @@ public class MonthlyReportAdapterRV extends RecyclerView.Adapter<MonthlyReportAd
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int i) {
-        double pc = ((double) amounts[i]/ (double) totalExp) * 100.00;
-        holder.tv_expField.setText(fieldName[i] + " (" + Integer.toString((int) pc)+"%)");
-        holder.tv_amount.setText("BDT "+Integer.toString(-1*amounts[i])+".00");
-        holder.pb_percentage.setProgress((int)pc);
-        holder.iv_icon.setImageResource(icons[i]);
+        //if(i!=8){
+            double pc = ((double) amounts[i]/ (double) totalExp) * 100.00;
+            holder.tv_expField.setText(fieldName[i] + " (" + Integer.toString((int) pc)+"%)");
+            holder.tv_amount.setText("BDT "+Integer.toString(-1*amounts[i])+".00");
+            holder.pb_percentage.setProgress((int)pc);
+            holder.iv_icon.setImageResource(icons[i]);
+        //}else holder.ll_sampleView.setVisibility(View.GONE);
+            if(i==8) holder.tv_amount.setTextColor(Color.parseColor("#00FF00"));
     }
 
     @Override
@@ -55,11 +61,13 @@ public class MonthlyReportAdapterRV extends RecyclerView.Adapter<MonthlyReportAd
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+        LinearLayout ll_sampleView;
         TextView tv_expField, tv_amount;
         ProgressBar pb_percentage;
         ImageView iv_icon;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            ll_sampleView = itemView.findViewById(R.id.sampleViewMonthlyReport);
             tv_amount = itemView.findViewById(R.id.reportExpenseAmountTV);
             tv_expField = itemView.findViewById(R.id.reportExpenseFieldTV);
             pb_percentage = itemView.findViewById(R.id.percentagePB);

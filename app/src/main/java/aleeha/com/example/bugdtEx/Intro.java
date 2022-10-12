@@ -50,7 +50,6 @@ public class Intro extends AppCompatActivity {
 
     private LinearLayout signInButton;
     private static final String TAG = "204";
-//    private String c_Id="502255437116-eseg3g44vr473g0vg7df5luut5n3eoia.apps.googleusercontent.com";
 
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
@@ -64,7 +63,6 @@ public class Intro extends AppCompatActivity {
         setContentView(R.layout.activity_intro);
 
         signInButton = findViewById(R.id.sign_in_button);
-
         /*
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,12 +83,8 @@ public class Intro extends AppCompatActivity {
         });
 
          */
-
-
-
-
-        ///*
         //---------------------------------------------------------------
+        ///*
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
@@ -106,10 +100,9 @@ public class Intro extends AppCompatActivity {
             });
         }
         //*/
-
-
-
     }
+
+
 
     /*
     @Override
@@ -181,7 +174,6 @@ public class Intro extends AppCompatActivity {
         Intent intent = gsc.getSignInIntent();
         startActivityForResult(intent,100);
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -198,7 +190,6 @@ public class Intro extends AppCompatActivity {
 
         }
     }
-
     private void DashBoardActivity() {
         finish();
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);

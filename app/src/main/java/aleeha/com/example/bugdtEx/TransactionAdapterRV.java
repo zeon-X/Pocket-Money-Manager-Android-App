@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,7 +46,9 @@ public class TransactionAdapterRV extends RecyclerView.Adapter<TransactionAdapte
 
         holder.transNameTV.setText(transName[position]);
         holder.transDateTV.setText(transDate[position] + " " + transTime[position]);
-
+        holder.transactionDetailsTV.setText(transDetails[position]);
+        holder.transIconIV.setImageResource(icons[position]);
+        
         if(transAmount[position]<0){
             holder.transAmountTV.setTextColor(Color.parseColor("#FF0000"));
             holder.transAmountTV.setText("- BDT"+Integer.toString(-1*transAmount[position]));
@@ -54,10 +57,6 @@ public class TransactionAdapterRV extends RecyclerView.Adapter<TransactionAdapte
             holder.transAmountTV.setTextColor(Color.parseColor("#00FF00"));
             holder.transAmountTV.setText("+ BDT"+Integer.toString(transAmount[position]));
         }
-
-        holder.transIconIV.setImageResource(icons[position]);
-        holder.transactionDetailsTV.setText(transDetails[position]);
-
     }
 
     @Override

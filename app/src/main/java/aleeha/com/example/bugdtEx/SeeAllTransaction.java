@@ -52,6 +52,7 @@ public class SeeAllTransaction extends AppCompatActivity {
             id[j] = everyTrans.get(i).getId();
             if(everyTrans.get(i).getPosition()==-1)img[j] = addMoneyIcon;
             else if(everyTrans.get(i).getPosition()==-2) img[j] = lendIcon;
+            else if(everyTrans.get(i).getPosition()==-500) img[j] = R.drawable.pic13;
             else img[j] = images[everyTrans.get(i).getPosition()];
             tDetails[j] = everyTrans.get(i).getDescription();
             ++j;

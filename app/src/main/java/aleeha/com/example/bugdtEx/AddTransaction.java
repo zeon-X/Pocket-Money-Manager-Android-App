@@ -5,6 +5,7 @@ import static java.lang.Integer.parseInt;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,10 +27,13 @@ public class AddTransaction extends AppCompatActivity {
     ImageView catIconIV;
     TextView catNameTV,dateTV,availAmountTV;
     EditText transAmountET, transDetailsET;
-    Button addTransBTN;
+    Button addTransBTN,btn_add_money_from_savings;
+    int savingsIcon = R.drawable.pic13;
 
     int position=-2;
     int currentBalance=0;
+    int savingsMoney=0;
+    boolean flag=true;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -43,12 +47,18 @@ public class AddTransaction extends AppCompatActivity {
         transAmountET = findViewById(R.id.transAmountET);
         transDetailsET = findViewById(R.id.transDescriptionET);
         addTransBTN = findViewById(R.id.addTransBTN);
+        btn_add_money_from_savings = findViewById(R.id.addMoneyFromSavings);
 
 
         DataBaseTrans dbTrans = new DataBaseTrans(AddTransaction.this);
         List<TransactionModel> everyTrans = dbTrans.getEveryOne();
         int len = everyTrans.size();
-        for(int i=0; i < len; ++i) currentBalance+=everyTrans.get(i).getTransAmount();
+        for(int i=0; i < len; ++i) {
+            currentBalance += everyTrans.get(i).getTransAmount();
+            if(everyTrans.get(i).getPosition()==8){
+                savingsMoney+=everyTrans.get(i).getTransAmount();
+            }
+        }
 
 
         String dateNow = "";
@@ -80,6 +90,16 @@ public class AddTransaction extends AppCompatActivity {
                 addTransBTN.setText("Add Money");
                 addTransBTN.setTextColor(Color.parseColor("#C5FF6C"));
                 position = -1;
+                btn_add_money_from_savings.setVisibility(View.VISIBLE);
+            }
+            else if(bundle.getInt("addMoney")==-500){
+                availAmountTV.setText("Available Savaings Balance: BDT " + -1*savingsMoney + ".00");
+
+                catIconIV.setImageResource(R.drawable.pic13);
+                catNameTV.setText("Add Money From Savings");
+                addTransBTN.setText("Add Money From Savings");
+                addTransBTN.setTextColor(Color.parseColor("#C5FF6C"));
+                position = -500;
             }
             else{
                 position = bundle.getInt("position");
@@ -97,6 +117,7 @@ public class AddTransaction extends AppCompatActivity {
         addTransBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                flag = true;
                 TransactionModel transactionModel = null;
                 try {
                         // fieldName, amount, date, description, is added
@@ -111,7 +132,26 @@ public class AddTransaction extends AppCompatActivity {
                                     true,
                                      1*position
                                     );
-                        } else if (bundle!=null){
+                        }
+                    if(bundle!=null && bundle.getInt("addMoney")==-500){
+                        if(!(parseInt(transAmountET.getText().toString()) > -1*savingsMoney)){
+                            transactionModel = new TransactionModel(
+                                    -500,
+                                    "Add From Savings",
+                                    1*parseInt(transAmountET.getText().toString()),
+                                    finalDateNow.toString()+"",
+                                    finalTimeNow.toString()+"",
+                                    transDetailsET.getText().toString()+"",
+                                    true,
+                                    1*position
+                            );
+                        }
+                        else{
+                            flag = false;
+                            Toast.makeText(AddTransaction.this, "Set Amount Less Then Available Savings Balance BDT "+-1*savingsMoney+".00", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                        else if (bundle!=null){
                              transactionModel = new TransactionModel(
                                      -1,
                                     bundle.getString("fieldName").toString()+"",
@@ -128,14 +168,25 @@ public class AddTransaction extends AppCompatActivity {
                     Toast.makeText(AddTransaction.this, "Put some numbers & try again...", Toast.LENGTH_SHORT).show();
                 }
 
-                DataBaseTrans dataBaseTrans = new DataBaseTrans(AddTransaction.this);
-                boolean b = dataBaseTrans.addOne(transactionModel);
-                if(b==true) {
-                    Toast.makeText(AddTransaction.this, "Success", Toast.LENGTH_SHORT).show();
-                    finish();
+                if(flag){
+                    DataBaseTrans dataBaseTrans = new DataBaseTrans(AddTransaction.this);
+                    boolean b = dataBaseTrans.addOne(transactionModel);
+                    if(b==true) {
+                        Toast.makeText(AddTransaction.this, "Success", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                    else Toast.makeText(AddTransaction.this, "Error", Toast.LENGTH_SHORT).show();
                 }
-                else Toast.makeText(AddTransaction.this, "Error", Toast.LENGTH_SHORT).show();
-
+                else Toast.makeText(AddTransaction.this, "Adding Error", Toast.LENGTH_SHORT).show();
+            }
+        });
+        btn_add_money_from_savings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(AddTransaction.this, "add Money From Savings clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AddTransaction.this, AddTransaction.class);
+                intent.putExtra("addMoney",-500);
+                startActivity(intent);
             }
         });
 

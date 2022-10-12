@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
             id[j] = everyTrans.get(i).getId();
             if(everyTrans.get(i).getPosition()==-1)img[j] = addMoneyIcon;
             else if(everyTrans.get(i).getPosition()==-2) img[j] = lendIcon;
+            else if(everyTrans.get(i).getPosition()==-500) img[j] = R.drawable.pic13;
             else img[j] = images[everyTrans.get(i).getPosition()];
             tDetails[j] = everyTrans.get(i).getDescription();
             currentBalance+=ta[j]; ++j;
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(int i, View view) {
                 DeleteOptionBottomSheetFragment deleteOptionBottomSheetFragment = new DeleteOptionBottomSheetFragment(MainActivity.this,id[i],fn[i],tDetails[i],td[i],tt[i],ta[i]);
                 deleteOptionBottomSheetFragment.show(getSupportFragmentManager(),deleteOptionBottomSheetFragment.getTag());
-
+                currentBalance = 0;
                 showAllTransactions();
             }
         });

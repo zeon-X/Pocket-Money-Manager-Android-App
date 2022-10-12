@@ -22,7 +22,7 @@ public class MonthlyReport extends AppCompatActivity {
     private List<TransactionModel> all_transactions,modified_trans;
     String [] fieldNames;
     int [] transaction;
-    int totalExp = 0,totalAdded=0;
+    int totalExp = 0,totalAdded=0,totalSave=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,13 +83,18 @@ public class MonthlyReport extends AppCompatActivity {
                         }
                         if(k==len2){
                             transaction[j]+=all_transactions.get(i).getTransAmount();
-                            totalExp+=all_transactions.get(i).getTransAmount();
+                            if(all_transactions.get(i).getPosition()!=8) {
+                                totalExp += all_transactions.get(i).getTransAmount();
+                            }
+                            else {
+                                totalSave += all_transactions.get(i).getTransAmount();
+                            }
                         }
                     }
                 }
             }
-            else if(flag && all_transactions.get(i).isMoneyAdded()==true){
-                totalAdded+=all_transactions.get(i).getTransAmount();
+            else if(flag && all_transactions.get(i).isMoneyAdded()==true && all_transactions.get(i).getPosition()!=-500){
+                    totalAdded += all_transactions.get(i).getTransAmount();
             }
         }
 

@@ -35,6 +35,7 @@ public class DailyReport extends AppCompatActivity {
     public void showAllTransactions(String x){
         DataBaseTrans dbTrans = new DataBaseTrans(DailyReport.this);
         List<TransactionModel> everyTrans = dbTrans.getEveryOne();
+        totalAdded=0; totalExpense=0;
 
         ArrayList<Integer>pos = new ArrayList<Integer>();
         int len2 = everyTrans.size();
@@ -65,7 +66,6 @@ public class DailyReport extends AppCompatActivity {
         int j;
         for(int i=0; i <len; ++i){
             j = pos.get(i);
-
             fn[i] = everyTrans.get(j).getExpenseField();
             ta[i] = everyTrans.get(j).getTransAmount();
             td[i] = everyTrans.get(j).getDate();
@@ -74,10 +74,15 @@ public class DailyReport extends AppCompatActivity {
             id[i] = everyTrans.get(j).getId();
             if(everyTrans.get(j).getPosition()==-1) img[i] = addMoneyIcon;
             else if(everyTrans.get(j).getPosition()==-2) img[i] = lendIcon;
+            else if(everyTrans.get(i).getPosition()==-500) img[i] = R.drawable.pic13;
             else img[i] = images[everyTrans.get(j).getPosition()];
 
-            if(ta[i]>=0) totalAdded+=ta[i];
-            else totalExpense+=(ta[i]*-1);
+            if(everyTrans.get(j).getPosition()==-1){
+                totalAdded+=ta[i];
+            }
+            if(everyTrans.get(j).getPosition()>-1 && everyTrans.get(j).getPosition()!=8){
+                totalExpense+=(ta[i]*-1);
+            }
         }
 
         totalAddedTV.setText("BDT "+Integer.toString(totalAdded) + ".00");
@@ -94,8 +99,7 @@ public class DailyReport extends AppCompatActivity {
         });
 
         transactionReportRV.setAdapter(transactionAdapter);
-        transactionReportRV.setLayoutManager(new LinearLayoutManager(this));
-//        return transactionAdapter;
+        transactionReportRV.setLayoutManager(new LinearLayoutManager(DailyReport.this));
     }
 
 
@@ -125,10 +129,8 @@ public class DailyReport extends AppCompatActivity {
         date_now+="";
         tv_todayReport.setText("Daily Report: " + date_now);
 
+        totalAdded=0; totalExpense=0;
         showAllTransactions(date_now);
-//        transactionAdapter = getTransactionAdapter(date_now);
-//        transactionReportRV.setAdapter(transactionAdapter);
-//        transactionReportRV.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
@@ -153,10 +155,7 @@ public class DailyReport extends AppCompatActivity {
 
         date_now = date_now.toString();
         date_now+="";
-
+        totalAdded=0; totalExpense=0;
         showAllTransactions(date_now);
-//        transactionAdapter = getTransactionAdapter(date_now);
-//        transactionReportRV.setAdapter(transactionAdapter);
-//        transactionReportRV.setLayoutManager(new LinearLayoutManager(this));
     }
 }
