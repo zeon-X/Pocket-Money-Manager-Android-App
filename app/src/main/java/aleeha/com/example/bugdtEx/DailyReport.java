@@ -20,7 +20,7 @@ public class DailyReport extends AppCompatActivity {
 
     private RecyclerView transactionReportRV;
     private TextView tv_todayReport;
-    int totalAdded=0, totalExpense=0;
+    int totalAdded=0, totalExpense=0, totalSavings=0;
     int [] images = {
             R.drawable.pic4,R.drawable.pic6,R.drawable.pic8,R.drawable.pic7,R.drawable.pic9,
             R.drawable.pic10,R.drawable.pic11,R.drawable.pic12,R.drawable.pic13,R.drawable.pic3,
@@ -28,14 +28,13 @@ public class DailyReport extends AppCompatActivity {
     };
     int addMoneyIcon = R.drawable.pic15,lendIcon = R.drawable.lending;
     String date_now,date_db;
-    TransactionAdapterRV transactionAdapter;
+    //TransactionAdapterRV transactionAdapter;
     TextView totalAddedTV,totalExpenseTV;
 
-
     public void showAllTransactions(String x){
+        totalAdded=0; totalExpense=0; totalSavings=0;
         DataBaseTrans dbTrans = new DataBaseTrans(DailyReport.this);
         List<TransactionModel> everyTrans = dbTrans.getEveryOne();
-        totalAdded=0; totalExpense=0;
 
         ArrayList<Integer>pos = new ArrayList<Integer>();
         int len2 = everyTrans.size();
@@ -54,7 +53,6 @@ public class DailyReport extends AppCompatActivity {
         }
 
         int len = pos.size();
-
         String[] fn = new String[len];
         String[] td = new String[len];
         String[] tt = new String[len];
@@ -74,13 +72,13 @@ public class DailyReport extends AppCompatActivity {
             id[i] = everyTrans.get(j).getId();
             if(everyTrans.get(j).getPosition()==-1) img[i] = addMoneyIcon;
             else if(everyTrans.get(j).getPosition()==-2) img[i] = lendIcon;
-            else if(everyTrans.get(i).getPosition()==-500) img[i] = R.drawable.pic13;
+            else if(everyTrans.get(j).getPosition()==-500) img[i] = R.drawable.pic13;
             else img[i] = images[everyTrans.get(j).getPosition()];
 
             if(everyTrans.get(j).getPosition()==-1){
                 totalAdded+=ta[i];
             }
-            if(everyTrans.get(j).getPosition()>-1 && everyTrans.get(j).getPosition()!=8){
+            else if(everyTrans.get(j).getPosition()>-1 && everyTrans.get(j).getPosition()!=8){
                 totalExpense+=(ta[i]*-1);
             }
         }
@@ -91,12 +89,14 @@ public class DailyReport extends AppCompatActivity {
         TransactionAdapterRV transactionAdapter =
                 new TransactionAdapterRV(DailyReport.this, fn, td, tt, ta, img, tDetails);
 
+        /*
         transactionAdapter.setOnItemClickListener(new TransactionAdapterRV.ClickListener() {
             @Override
             public void onItemClick(int i, View view) {
                 Toast.makeText(DailyReport.this, fn[i] + " touched...", Toast.LENGTH_SHORT).show();
             }
         });
+        */
 
         transactionReportRV.setAdapter(transactionAdapter);
         transactionReportRV.setLayoutManager(new LinearLayoutManager(DailyReport.this));

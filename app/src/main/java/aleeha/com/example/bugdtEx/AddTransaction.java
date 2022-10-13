@@ -32,7 +32,7 @@ public class AddTransaction extends AppCompatActivity {
 
     int position=-2;
     int currentBalance=0;
-    int savingsMoney=0;
+    int savingsMoney=0,savingsWithdraw=0;
     boolean flag=true;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -55,7 +55,7 @@ public class AddTransaction extends AppCompatActivity {
         int len = everyTrans.size();
         for(int i=0; i < len; ++i) {
             currentBalance += everyTrans.get(i).getTransAmount();
-            if(everyTrans.get(i).getPosition()==8){
+            if(everyTrans.get(i).getPosition()==8 || everyTrans.get(i).getPosition()==-500){
                 savingsMoney+=everyTrans.get(i).getTransAmount();
             }
         }

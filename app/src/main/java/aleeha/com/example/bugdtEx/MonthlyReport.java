@@ -98,7 +98,7 @@ public class MonthlyReport extends AppCompatActivity {
             }
         }
 
-        tv_addMoney.setText(Integer.toString(totalAdded));
+        tv_addMoney.setText(Integer.toString(totalAdded+totalSave));
         tv_expenseMoney.setText(Integer.toString(-1*totalExp));
 
         MonthlyReportAdapterRV monthlyReportAdapterRV = new MonthlyReportAdapterRV(MonthlyReport.this, fieldNames, transaction,totalExp);
