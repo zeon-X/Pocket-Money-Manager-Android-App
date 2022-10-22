@@ -187,6 +187,7 @@ public class AddTransaction extends AppCompatActivity {
                 Intent intent = new Intent(AddTransaction.this, AddTransaction.class);
                 intent.putExtra("addMoney",-500);
                 startActivity(intent);
+                finish();
             }
         });
 

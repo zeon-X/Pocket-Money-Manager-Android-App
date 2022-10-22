@@ -97,7 +97,7 @@ public class SeeAllTransaction extends AppCompatActivity {
         refreshBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(SeeAllTransaction.this, "Refresh clicked..", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SeeAllTransaction.this, "Refresh", Toast.LENGTH_SHORT).show();
                 showAllTransactions();
             }
         });

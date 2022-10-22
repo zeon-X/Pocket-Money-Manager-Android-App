@@ -90,11 +90,11 @@ public class MainActivity extends AppCompatActivity {
                 DeleteOptionBottomSheetFragment deleteOptionBottomSheetFragment = new DeleteOptionBottomSheetFragment(MainActivity.this,id[i],fn[i],tDetails[i],td[i],tt[i],ta[i]);
                 deleteOptionBottomSheetFragment.show(getSupportFragmentManager(),deleteOptionBottomSheetFragment.getTag());
                 currentBalance = 0;
+
                 showAllTransactions();
             }
         });
-
-
+        //transactionAdapter.notifyDataSetChanged();
         transactionReportRV.setAdapter(transactionAdapter);
         transactionReportRV.setLayoutManager(new LinearLayoutManager(this));
     }

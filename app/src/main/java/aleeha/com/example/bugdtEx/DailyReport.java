@@ -89,14 +89,14 @@ public class DailyReport extends AppCompatActivity {
         TransactionAdapterRV transactionAdapter =
                 new TransactionAdapterRV(DailyReport.this, fn, td, tt, ta, img, tDetails);
 
-        /*
+        ///*
         transactionAdapter.setOnItemClickListener(new TransactionAdapterRV.ClickListener() {
             @Override
             public void onItemClick(int i, View view) {
-                Toast.makeText(DailyReport.this, fn[i] + " touched...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DailyReport.this, fn[i] + " clicked...", Toast.LENGTH_SHORT).show();
             }
         });
-        */
+        //*/
 
         transactionReportRV.setAdapter(transactionAdapter);
         transactionReportRV.setLayoutManager(new LinearLayoutManager(DailyReport.this));
