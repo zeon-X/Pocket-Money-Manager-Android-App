@@ -201,5 +201,25 @@
             </LinearLayout>
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/logoutLL"
+            android:paddingHorizontal="24dp"
+            android:gravity="center"
+            android:background="@drawable/report_item_bg"
+            android:backgroundTint="@color/black_2"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textColor="@color/white"
+                android:textStyle="normal"
+                android:textSize="18dp"
+                android:id="@+id/textView118"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Logout" /></LinearLayout>
+
     </LinearLayout>
 </ScrollView>

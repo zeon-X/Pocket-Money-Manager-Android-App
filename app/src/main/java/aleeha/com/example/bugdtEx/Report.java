@@ -8,9 +8,11 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Report extends AppCompatActivity {
 
-    private LinearLayout dailyReportBTN,weeklyReportBTN,monthlyReportBTN,lendReportBTN,borrowReportBTN,resetBTN;
+    private LinearLayout dailyReportBTN,weeklyReportBTN,monthlyReportBTN,lendReportBTN,borrowReportBTN,resetBTN,logoutBTN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class Report extends AppCompatActivity {
         lendReportBTN = findViewById(R.id.lendReportLL);
         borrowReportBTN = findViewById(R.id.borrowReportLL);
         resetBTN = findViewById(R.id.resetEveryThingLL);
+        logoutBTN = findViewById(R.id.logoutLL);
 
         dailyReportBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +71,13 @@ public class Report extends AppCompatActivity {
             public void onClick(View view) {
                 ResetFragment rf = new ResetFragment(Report.this);
                 rf.show(getSupportFragmentManager(),rf.getTag());
+            }
+        });
+
+        logoutBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
             }
         });
 
