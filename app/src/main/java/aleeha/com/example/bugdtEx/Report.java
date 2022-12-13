@@ -78,6 +78,9 @@ public class Report extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
+                Toast.makeText(Report.this, "Logout!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Report.this,Intro.class);
+                startActivity(intent);
             }
         });
 
