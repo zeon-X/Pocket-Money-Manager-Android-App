@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "255805827513-l4q6koecht4sh6sejavmh1eib4jivs5f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "aleeha.com.example.bugdtEx",
+            "certificate_hash": "f7bca557ed15674b4388edc6ca2124cc0f37fc9e"
+          }
+        },
+        {
           "client_id": "255805827513-2ab67am1259jnl2t2sdqm3rtmrff8vm4.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -13,12 +13,12 @@ plugins {
     id 'com.android.library' version '7.2.1' apply false
 }
 
-//allprojects {
-//    repositories {
-//        google()
-//        mavenCentral()
-//    }
-//}
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
 
 task clean(type: Delete) {
     delete rootProject.buildDir

@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">BudgetEx</string>
 
+
+    <string name="web_client_id">255805827513-2ab67am1259jnl2t2sdqm3rtmrff8vm4.apps.googleusercontent.com</string>
+
     <string name="intro1">WELCOME TO BUDGET-EX</string>
     <string name="intro2">Your Budget Expense Manager App Helps You Keep an Track on Your Daily Transactions. It`s an Life-Style App that Tracks Notes on Daily Transactions and Present Reports on Daily Weekly Monthly Basis.</string>
     <string-array name="expense_filed_names">
