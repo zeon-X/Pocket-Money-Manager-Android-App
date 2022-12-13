@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     //Variables
     private int currentBalance=0;
     private ImageView addMoneyTV;
-    private TextView currentBalanceTV,transactionDetailsTV,seeAllTV, userNameTV;
+    private TextView currentBalanceTV,seeAllTV, userNameTV;
     private RecyclerView expenseFieldsRV,transactionReportRV;
     private LinearLayout borrowBTN, lendBTN,reportBTN,refreshBTN;
     ExpenseAdapterRV expenseAdapter;
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         addMoneyTV = findViewById(R.id.addMoneyBTNIV);
         refreshBTN = findViewById(R.id.refreshBTNLL);
         currentBalanceTV = findViewById(R.id.currentBalanceTV);
-        transactionDetailsTV = findViewById(R.id.transactionDetailsTV);
+        //transactionDetailsTV = findViewById(R.id.transactionDetailsTV);
         seeAllTV = findViewById(R.id.seeAllBTN);
         userNameTV = findViewById(R.id.userNameTV);
         reportBTN = findViewById(R.id.reportLL);

@@ -294,7 +294,7 @@
 
                 <TextView
                     android:gravity="center_vertical"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="viewEnd"
                     android:id="@+id/seeAllBTN"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -302,7 +302,7 @@
                     android:text="See All" />
             </LinearLayout>
 
-            //TRANSACTIONS
+
             <androidx.recyclerview.widget.RecyclerView
                 android:paddingRight="0dp"
                 android:id="@+id/transactionRV"

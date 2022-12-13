@@ -63,18 +63,23 @@ public class Intro extends AppCompatActivity implements GoogleApiClient.OnConnec
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
-        ///*
+
         firebaseAuth=com.google.firebase.auth.FirebaseAuth.getInstance();
 
         authStateListener = new FirebaseAuth.AuthStateListener(){
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
-            FirebaseUser user =firebaseAuth.getCurrentUser();
+            FirebaseUser user = firebaseAuth.getCurrentUser();
                 if(user!=null){
                     Log.d(TAG,"onAuthStateChanged:signed_in:"+user.getUid());
+                    //Toast.makeText(Intro.this, "onAuthStateChanged:signed_in:"+user.getDisplayName(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Intro.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
                 else{
                     Log.d(TAG,"onAuthStateChanged:signed_out");
+                    //Toast.makeText(Intro.this, "onAuthStateChanged:signed_out", Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -92,7 +97,6 @@ public class Intro extends AppCompatActivity implements GoogleApiClient.OnConnec
 
 
         signInButton = findViewById(R.id.sign_in_button);
-
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,17 +129,16 @@ public class Intro extends AppCompatActivity implements GoogleApiClient.OnConnec
     private void handleSignInResult(GoogleSignInResult result){
         if(result.isSuccess()){
             GoogleSignInAccount account = result.getSignInAccount();
-            idToken=account.getIdToken();
-            name =account.getDisplayName();
-            email=account.getEmail();
+            idToken=account.getIdToken(); name =account.getDisplayName(); email=account.getEmail();
             AuthCredential credential = GoogleAuthProvider.getCredential(idToken,null);
             firebaseAuthWithGoogle(credential);
+
         }else{
             Log.e(TAG,"Login Unsuccessful."+result);
             Toast.makeText(this, "Login Unsuccessful",Toast.LENGTH_SHORT).show();
         }
     }
-
+    ///*
     private void firebaseAuthWithGoogle(AuthCredential credential){
         firebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -144,7 +147,7 @@ public class Intro extends AppCompatActivity implements GoogleApiClient.OnConnec
                         Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
                         if(task.isSuccessful()){
                             Toast.makeText(Intro.this, "Login successful", Toast.LENGTH_SHORT).show();
-//                            gotoProfile();
+
                             Intent intent = new Intent(Intro.this, MainActivity.class);
                             startActivity(intent);
                             finish();
@@ -157,18 +160,14 @@ public class Intro extends AppCompatActivity implements GoogleApiClient.OnConnec
                     }
                 });
     }
-
-//    private void gotoProfile(){
-//        Intent intent = new Intent(Intro.this, ProfileActivity.class);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        startActivity(intent);
-//        finish();
-//    }
+   //*//*
     @Override
     protected void onStart(){
         super.onStart();
+
         if(authStateListener!=null){
-            FirebaseAuth.getInstance().signOut();
+            //FirebaseAuth.getInstance().signOut();
+            //Toast.makeText(this, "SignedOut....", Toast.LENGTH_SHORT).show();
         }
         firebaseAuth.addAuthStateListener(authStateListener);
     }
@@ -176,9 +175,10 @@ public class Intro extends AppCompatActivity implements GoogleApiClient.OnConnec
     protected void onStop(){
         super.onStop();
         if(authStateListener!=null){
-            firebaseAuth.removeAuthStateListener(authStateListener);
+            //firebaseAuth.removeAuthStateListener(authStateListener);
         }
     }
+    //*/
 
 
 }

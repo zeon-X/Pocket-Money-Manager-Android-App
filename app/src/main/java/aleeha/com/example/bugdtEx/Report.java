@@ -1,5 +1,6 @@
 package aleeha.com.example.bugdtEx;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +9,13 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApi;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Report extends AppCompatActivity {
@@ -78,6 +86,7 @@ public class Report extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
+
                 Toast.makeText(Report.this, "Logout!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Report.this,Intro.class);
                 startActivity(intent);
@@ -85,4 +94,5 @@ public class Report extends AppCompatActivity {
         });
 
     }
+
 }
